@@ -38,8 +38,6 @@ public class FloorConstruction {
         //n = total number of floor to be made
         int n = sc.nextInt();
         int[] floorStock = new int[n];
-        //maybe helpful in future so making temp copy of this array to work on that array 
-        int[] tempfloorStock = new int[n]; 
         int builder = n;//builder is the floor to be built at bottom
         int i = 0;//index of floorStock
         String[] result = new String[n];//declare to get desired output
@@ -49,7 +47,6 @@ public class FloorConstruction {
             System.out.println("enter the floor size given on day :"+" "+day);
             int a = sc.nextInt();
             floorStock[i] = a;//floor manufactured at ith day
-            tempfloorStock[i] = a;//temp array to use for binary search
             //Arrays.sort(tempfloorStock);-->bug test
             String str="";//initialising str for storing result
             /* ---construction logic---
@@ -58,7 +55,7 @@ public class FloorConstruction {
                 builder--   //builder is now the next floor to be built and repeat 
                 once result is ready we store that in result array with ith day index for output 
             */
-            while(Search(tempfloorStock, builder))
+            while(Search(floorStock, builder))
             {   
                 //System.out.println("/-"+Arrays.binarySearch(tempfloorStock, builder));-->bug test
                 str = str+" "+Integer.toString(builder);//storing construction idea as string
